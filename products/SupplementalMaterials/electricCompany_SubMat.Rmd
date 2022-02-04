@@ -1,0 +1,49 @@
+---
+title: 'Electric Company Study: Supplemental Materials'
+author: "William Murrah"
+date: "2/4/2022"
+output: pdf_document
+---
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+opts_chunk$set(echo = TRUE)
+library(texreg)
+library(performance)
+options(knitr.kable.NA = '')
+```
+
+
+Here we document the decision making process for modeling the Electric Company Study. The code, data. and documentation for this study can be found on the project website at: https://github.com/auqmer/electric_company_Example. 
+
+
+```{r}
+source("code/prepare_WideElectricCompanyData.R")
+```
+
+
+```{r}
+source("code/analyze_electricCompany.R")
+```
+
+## Analysis of Covariance without and with interaction
+
+To model the impact of exposure to the program, an analysis of covariance was estimated with pre-test as a covariate. This was followed by including an interaction term to see if the relation between pre-test and post-test was different across conditions. 
+
+## Model Comparison
+
+To formally test the two models, we conducted a likelihood ratio test. 
+The results are given below.
+```{r}
+kable(anova(ancova, ancovaX), digits = 2)
+```
+
+Below we display both models, noting that the second model was found to be the better fitting model.
+
+```{r, results='asis'}
+texreg(list(ancova, ancovaX))
+```
+
+
+
+
