@@ -26,6 +26,27 @@ source("code/prepare_WideElectricCompanyData.R")
 source("code/analyze_electricCompany.R")
 ```
 
+\newpage
+
+## Exploring Data
+
+```{r}
+source("code/plotDistributionPosttest_gradeCondition.R")
+```
+
+
+```{r}
+source("code/ANCOVAplot.R")
+```
+
+
+\newpage
+
+```{r, results='asis'}
+kable(describe(electric), digits = 2)
+```
+
+
 ## Analysis of Covariance without and with interaction
 
 To model the impact of exposure to the program, an analysis of covariance was estimated with pre-test as a covariate. This was followed by including an interaction term to see if the relation between pre-test and post-test was different across conditions. 
